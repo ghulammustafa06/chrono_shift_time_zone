@@ -85,3 +85,74 @@ function convertTime() {
         second: 'numeric',
         hour12: true
     };
+
+    const convertedTime = now.toLocaleString('en-US', options);
+    const $resultElement = $('#result');
+    $resultElement.removeClass().addClass('animate__animated animate__fadeIn');
+    $resultElement.html(`
+        <i class="fas fa-clock"></i> Converted Time: ${convertedTime}
+        <br>
+        <i class="fas fa-map-marker-alt"></i> Time Zone: ${toZone}
+        <br>
+        ${getFlag(fromZone)} → ${getFlag(toZone)}
+    `);
+
+    updateTimeDifference(fromZone, toZone);
+}
+
+function swapTimeZones() {
+    const $fromZone = $('#fromZone');
+    const $toZone = $('#toZone');
+    const temp = $fromZone.val();
+    $fromZone.val($toZone.val());
+    $toZone.val(temp);
+    convertTime();
+}
+
+function updateTimeDifference(fromZone, toZone) {
+    const now = new Date();
+    const fromTime = new Date(now.toLocaleString('en-US', { timeZone: fromZone }));
+    const toTime = new Date(now.toLocaleString('en-US', { timeZone: toZone }));
+    const diffHours = (toTime - fromTime) / (1000 * 60 * 60);
+    const absHours = Math.abs(diffHours);
+    const sign = diffHours >= 0 ? '+' : '-';
+    $('#timeDifference').text(`Time difference: ${sign}${absHours.toFixed(1)} hours`);
+}
+
+function getFlag(timeZone) {
+    const countryCode = timeZoneToCountryCode(timeZone);
+    return `<img src="https://flagcdn.com/w40/${countryCode}.png" class="flag-icon" alt="${timeZone} flag">`;
+}
+
+function timeZoneToCountryCode(timeZone) {
+    const countryMapping = {
+        'Europe/Berlin': 'de',
+        'America/Sao_Paulo': 'br',
+        'Asia/Shanghai': 'cn',
+        'Europe/Moscow': 'ru',
+        'Africa/Cairo': 'eg',
+        'Africa/Johannesburg': 'za',
+        'America/Toronto': 'ca',
+        'Asia/Seoul': 'kr',
+        'Europe/Istanbul': 'tr',
+        'America/Mexico_City': 'mx',
+        'Asia/Bangkok': 'th',
+        'Asia/Hong_Kong': 'hk',
+        'Europe/Stockholm': 'se',
+        'America/New_York': 'us',
+        'America/Los_Angeles': 'us',
+        'America/Chicago': 'us',
+        'Europe/London': 'gb',
+        'Europe/Paris': 'fr',
+        'Asia/Tokyo': 'jp',
+        'Asia/Dubai': 'ae',
+        'Asia/Karachi': 'pk',
+        'Asia/Kolkata': 'in',
+    };
+
+    return countryMapping[timeZone] || 'unknown';
+}
+
+function guessUserTimeZone() {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone;
+}
