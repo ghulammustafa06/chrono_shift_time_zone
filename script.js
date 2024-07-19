@@ -39,3 +39,49 @@ function populateTimeZones() {
         { zone: 'Asia/Hong_Kong', label: 'Hong Kong (HKT)' },
         { zone: 'Europe/Stockholm', label: 'Stockholm (CET)' },
     ];
+
+    const $fromZone = $('#fromZone');
+    const $toZone = $('#toZone');
+
+    timeZones.forEach(tz => {
+        $fromZone.append(`<option value="${tz.zone}">${tz.label}</option>`);
+        $toZone.append(`<option value="${tz.zone}">${tz.label}</option>`);
+    });
+
+    $fromZone.val(guessUserTimeZone());
+    $toZone.val('Asia/Karachi'); 
+}
+
+function setupEventListeners() {
+    $('#convertBtn').on('click', convertTime);
+    $('#swapBtn').on('click', swapTimeZones);
+    $('#fromZone, #toZone').on('change', convertTime);
+}
+
+function updateCurrentTime() {
+    const now = new Date();
+    const fromZone = $('#fromZone').val();
+    const options = {
+        timeZone: fromZone,
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: true
+    };
+    const currentTime = now.toLocaleString('en-US', options);
+    $('#currentTime').text(`Current time: ${currentTime}`);
+    convertTime();
+}
+
+function convertTime() {
+    const now = new Date();
+    const fromZone = $('#fromZone').val();
+    const toZone = $('#toZone').val();
+
+    const options = {
+        timeZone: toZone,
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: true
+    };
