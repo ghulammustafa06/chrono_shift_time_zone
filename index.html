@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrono Shift</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <nav class="animate__animated animate__fadeInDown">
+        <div class="logo">Chrono Shift</div>
+        <ul>
+            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#fact"><i class="fas fa-clock"></i> Fact</a></li>
+            <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+        </ul>
+    </nav>
+    <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+    </ul>
+    </nav>
+
+    <div class="container animate__animated animate__fadeIn">
+        <h1><i class="fas fa-globe"></i> Time Zone Converter</h1>
+        <div class="converter">
+            <div class="from">
+                <label for="fromTime"><i class="fas fa-calendar-alt"></i> From:</label>
+                <input type="datetime-local" id="fromTime">
+                <select id="fromZone">
+                    <option value="America/New_York">USA (EDT)</option>
+                    <option value="Asia/Karachi">Pakistan (PKT)</option>
+                    <option value="Europe/London">UK (BST)</option>
+                </select>
+            </div>
+            <div class="to">
+                <label for="toZone"><i class="fas fa-plane-arrival"></i> To:</label>
+                <select id="toZone">
+                    <option value="America/New_York">USA (EDT)</option>
+                    <option value="Asia/Karachi">Pakistan (PKT)</option>
+                    <option value="Europe/London">UK (BST)</option>
+                </select>
+            </div>
+            <button onclick="convertTime()"><i class="fas fa-exchange-alt"></i> Convert</button>
+            <div id="result" class="animate__animated"></div>
+        </div>
+    </div>
+
+    <footer class="animate__animated animate__fadeInUp">
+        <p>Develop by GM. With Love</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
