@@ -156,3 +156,14 @@ function timeZoneToCountryCode(timeZone) {
 function guessUserTimeZone() {
     return Intl.DateTimeFormat().resolvedOptions().timeZone;
 }
+
+
+function applyAnimation(timeZoneElement, animationClass) {
+    timeZoneElement.classList.add(animationClass);
+    timeZoneElement.addEventListener('animationend', () => {
+        timeZoneElement.classList.remove(animationClass);
+    }, { once: true });
+}
+
+const timeZoneElement = document.querySelector('#timeZoneDisplay');
+applyAnimation(timeZoneElement, 'fade-in');
