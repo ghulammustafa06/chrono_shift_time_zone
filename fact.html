@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover fascinating time facts and explore the mysteries of chronology with Chrono Shift.">
+    <title>Chrono Shift</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="fact.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="particles-js" aria-hidden="true"></div>
+    
+    <header>
+        <nav class="animate__animated animate__fadeInDown">
+            <div class="logo">
+                <a href="index.html">Chrono Shift</a>
+            </div>
+            <button id="menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul id="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home" aria-hidden="true"></i> Home</a></li>
+                <li><a href="fact.html" aria-current="page" class="active"><i class="fas fa-clock" aria-hidden="true"></i> Facts</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle" aria-hidden="true"></i> About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container animate__animated animate__fadeIn">
+        <h1><i class="fas fa-lightbulb" aria-hidden="true"></i> Fascinating Time Facts</h1>
+        
+        <section class="fact-container animate-on-scroll" id="factContainer" aria-label="Time Facts">
+        </section>
+
+        <section id="randomFact" class="animate-on-scroll" aria-labelledby="randomFactTitle">
+            <h2 id="randomFactTitle" class="doyyouknow">Did You Know?</h2>
+            <p id="randomFactText" aria-live="polite"></p>
+            <button id="randomFactBtn">Show Another Fact</button>
+        </section>
+
+        <section class="time-zone-info animate-on-scroll" aria-labelledby="timeZoneTitle">
+            <h2 id="timeZoneTitle">Current Time Around the World</h2>
+            <div id="worldClock" aria-label="World Clock"></div>
+        </section>
+
+        <section class="historical-timeline animate-on-scroll" aria-labelledby="timelineTitle">
+            <h2 id="timelineTitle">Timeline of Time Measurement</h2>
+            <div id="timeline" aria-label="Historical Timeline"></div>
+        </section>
+    </main>
+
+    <footer class="animate__animated animate__fadeInUp">
+        <p>&copy; 2024 Chrono Shift. Developed by GM. With Love</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="fact.js"></script>
+</body>
+</html>
