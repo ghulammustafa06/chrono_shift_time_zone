@@ -154,3 +154,65 @@ nav ul li i.active {
     color: var(--primary-color);
     margin-bottom: 10px;
 }
+
+
+.fact-content {
+    color: var(--text-color);
+}
+
+#randomFact {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: var(--card-background);
+    border-radius: 10px;
+}
+
+#randomFactBtn {
+    margin-top: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#randomFactBtn:hover {
+    background-color: #c81e45;
+}
+
+#randomFactText {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.doyyouknow {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.time-zone-info, .historical-timeline {
+    margin-top: 40px;
+    background-color: var(--card-background);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#worldClock {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.clock-item {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+}
