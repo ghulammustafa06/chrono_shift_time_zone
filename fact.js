@@ -166,6 +166,56 @@ particlesJS('particles-js', {
             { year: '1967 CE', event: 'Atomic time becomes the official standard for timekeeping' }
         ];
 
+        const timeline = document.getElementById('timeline');
+        timelineEvents.forEach(event => {
+            const eventElement = document.createElement('div');
+            eventElement.className = 'timeline-event';
+            eventElement.innerHTML = `<strong>${event.year}</strong>: ${event.event}`;
+            timeline.appendChild(eventElement);
+        });
+    }
+
+    createTimeline();
+    
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    menuToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('show');
+    });
+
+    const scrollTopBtn = document.createElement('button');
+    scrollTopBtn.innerHTML = '&uarr;';
+    scrollTopBtn.className = 'scroll-top-btn';
+    document.body.appendChild(scrollTopBtn);
+
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.style.display = 'block';
+        } else {
+            scrollTopBtn.style.display = 'none';
+        }
+    });
+
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const darkModeToggle = document.createElement('button');
+    darkModeToggle.innerHTML = '🌓';
+    darkModeToggle.className = 'dark-mode-toggle';
+    document.body.appendChild(darkModeToggle);
+
+    darkModeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+
     function initAnimations() {
         const elements = document.querySelectorAll('.animate-on-scroll');
         const observer = new IntersectionObserver((entries) => {
