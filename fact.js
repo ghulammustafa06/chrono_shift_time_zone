@@ -97,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
         "The concept of 'time dilation' was first proposed by Albert Einstein in his theory of relativity.",
     ];
 
-    
     const randomFactText = document.getElementById('randomFactText');
     const randomFactBtn = document.getElementById('randomFactBtn');
 
@@ -133,46 +132,51 @@ particlesJS('particles-js', {
     retina_detect: true
 });
 
-function updateWorldClock() {
-    const timeZones = [
-        { city: 'New York', zone: 'America/New_York' },
-        { city: 'London', zone: 'Europe/London' },
-        { city: 'Tokyo', zone: 'Asia/Tokyo' },
-        { city: 'Sydney', zone: 'Australia/Sydney' },
-        { city: 'Islamabad', zone: 'Asia/Karachi' },
-    ];
 
-    const worldClockContainer = document.getElementById('worldClock');
-    worldClockContainer.innerHTML = '';
+    function updateWorldClock() {
+        const timeZones = [
+            { city: 'New York', zone: 'America/New_York' },
+            { city: 'London', zone: 'Europe/London' },
+            { city: 'Tokyo', zone: 'Asia/Tokyo' },
+            { city: 'Sydney', zone: 'Australia/Sydney' },
+            { city: 'Islamabad', zone: 'Asia/Karachi' },
+        ];
 
-    timeZones.forEach(tz => {
-        const time = new Date().toLocaleTimeString('en-US', { timeZone: tz.zone });
-        const clockElement = document.createElement('div');
-        clockElement.className = 'clock-item';
-        clockElement.innerHTML = `<strong>${tz.city}</strong>: ${time}`;
-        worldClockContainer.appendChild(clockElement);
-    });
-}
+        const worldClockContainer = document.getElementById('worldClock');
+        worldClockContainer.innerHTML = '';
 
-setInterval(updateWorldClock, 1000);
+        timeZones.forEach(tz => {
+            const time = new Date().toLocaleTimeString('en-US', { timeZone: tz.zone });
+            const clockElement = document.createElement('div');
+            clockElement.className = 'clock-item';
+            clockElement.innerHTML = `<strong>${tz.city}</strong>: ${time}`;
+            worldClockContainer.appendChild(clockElement);
+        });
+    }
 
-function createTimeline() {
-    const timelineEvents = [
-        { year: '3500 BCE', event: 'Ancient Egyptians create the solar calendar' },
-        { year: '45 BCE', event: 'Julius Caesar introduces the Julian calendar' },
-        { year: '1582 CE', event: 'Gregorian calendar introduced by Pope Gregory XIII' },
-        { year: '1656 CE', event: 'Christiaan Huygens invents the pendulum clock' },
-        { year: '1884 CE', event: 'International Meridian Conference establishes global time zones' },
-        { year: '1967 CE', event: 'Atomic time becomes the official standard for timekeeping' }
-    ];
+    setInterval(updateWorldClock, 1000);
 
-    const timeline = document.getElementById('timeline');
-    timelineEvents.forEach(event => {
-        const eventElement = document.createElement('div');
-        eventElement.className = 'timeline-event';
-        eventElement.innerHTML = `<strong>${event.year}</strong>: ${event.event}`;
-        timeline.appendChild(eventElement);
-    });
-}
+    function createTimeline() {
+        const timelineEvents = [
+            { year: '3500 BCE', event: 'Ancient Egyptians create the solar calendar' },
+            { year: '45 BCE', event: 'Julius Caesar introduces the Julian calendar' },
+            { year: '1582 CE', event: 'Gregorian calendar introduced by Pope Gregory XIII' },
+            { year: '1656 CE', event: 'Christiaan Huygens invents the pendulum clock' },
+            { year: '1884 CE', event: 'International Meridian Conference establishes global time zones' },
+            { year: '1967 CE', event: 'Atomic time becomes the official standard for timekeeping' }
+        ];
 
-createTimeline()
+    function initAnimations() {
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__animated', 'animate__fadeIn');
+                }
+            });
+        });
+
+        elements.forEach(el => observer.observe(el));
+    }
+
+    initAnimations();

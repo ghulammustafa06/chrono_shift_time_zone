@@ -155,7 +155,6 @@ nav ul li i.active {
     margin-bottom: 10px;
 }
 
-
 .fact-content {
     color: var(--text-color);
 }
@@ -351,5 +350,39 @@ footer p {
 
     nav ul li {
         margin: 10px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    body, .logo a, nav ul li a, .fact-title, .fact-content, #randomFactText, .doyyouknow {
+        font-size: smaller; 
+    }
+    .container, nav {
+        padding: 1rem; 
+    }
+    .fact-card, .time-zone-info, .historical-timeline {
+        width: 100%; 
+        margin: 10px 0; 
+    }
+}
+
+@media (max-width: 480px) {
+    body, .logo a, nav ul li a, .fact-title, .fact-content, #randomFactText, .doyyouknow {
+        font-size: smaller;
+    }
+    nav {
+        flex-direction: column; 
+    }
+    nav ul li {
+        margin: 5px 0; 
+    }
+    .container {
+        margin-top: 60px; 
+    }
+    .fact-card, .time-zone-info, .historical-timeline {
+        padding: 10px; 
+    }
+    #menu-toggle {
+        display: inline-block; 
     }
 }
